@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Loader, Clock, TrendingUp, X } from 'lucide-react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { API_BASE_URL } from '../config'
 
 const SearchSection = ({ onSearchResults, initialQuery = '', triggerSearch = false, onSearchTriggered }) => {
   const [query, setQuery] = useState(initialQuery)
@@ -59,7 +60,7 @@ const SearchSection = ({ onSearchResults, initialQuery = '', triggerSearch = fal
     const timer = setTimeout(async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/search?query=${encodeURIComponent(query)}`
+          `${API_BASE_URL}/search?query=${encodeURIComponent(query)}`
         )
         if (response.data.success && response.data.results) {
           // Get unique suggestions
@@ -115,7 +116,7 @@ const SearchSection = ({ onSearchResults, initialQuery = '', triggerSearch = fal
       const symptomResult = searchBySymptom(queryToSearch)
       
       const response = await axios.get(
-        `http://localhost:8000/search?query=${encodeURIComponent(symptomResult || queryToSearch)}`
+        `${API_BASE_URL}/search?query=${encodeURIComponent(symptomResult || queryToSearch)}`
       )
 
       if (response.data.success && response.data.results?.length > 0) {

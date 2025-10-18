@@ -4,6 +4,7 @@ import { useDropzone } from 'react-dropzone'
 import { Upload, Image as ImageIcon, Loader } from 'lucide-react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { API_BASE_URL } from '../config'
 
 const UploadSection = ({ onUploadComplete, isLoading, setIsLoading }) => {
   const [preview, setPreview] = useState(null)
@@ -24,7 +25,7 @@ const UploadSection = ({ onUploadComplete, isLoading, setIsLoading }) => {
 
     try {
       console.log('📤 Uploading file to backend...')
-      const response = await axios.post('http://localhost:8000/ocr', formData, {
+      const response = await axios.post(`${API_BASE_URL}/ocr`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
 
@@ -35,7 +36,7 @@ const UploadSection = ({ onUploadComplete, isLoading, setIsLoading }) => {
         
         // Fetch detailed drug information
         const medicinePromises = response.data.detected_medicines.map(med =>
-          axios.get(`http://localhost:8000/drugs?medicine_name=${encodeURIComponent(med)}`)
+          axios.get(`${API_BASE_URL}/drugs?medicine_name=${encodeURIComponent(med)}`)
         )
         
         const results = await Promise.all(medicinePromises)
