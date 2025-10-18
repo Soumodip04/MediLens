@@ -249,13 +249,26 @@ async def process_prescription(file: UploadFile = File(...)):
     Returns: Detected medicine names
     """
     try:
+        # Validate file
+        if not file:
+            raise HTTPException(status_code=400, detail="No file uploaded")
+        
+        # Log incoming request
+        print(f"📥 Received file: {file.filename}, Content-Type: {file.content_type}")
+        
         # Read image
         contents = await file.read()
+        
+        if not contents:
+            raise HTTPException(status_code=400, detail="Empty file uploaded")
+        
+        print(f"📦 File size: {len(contents)} bytes")
+        
         nparr = np.frombuffer(contents, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
         
         if img is None:
-            raise HTTPException(status_code=400, detail="Invalid image file")
+            raise HTTPException(status_code=400, detail="Invalid image file. Please upload a valid JPEG or PNG image.")
         
         # Preprocess image for better OCR
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

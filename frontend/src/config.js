@@ -3,8 +3,13 @@
  * This file centralizes all API endpoint configurations
  */
 
-// Get API URL from environment variable or use production default
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://medilens-backend-e3x0.onrender.com'
+// Automatically detect environment and use appropriate backend URL
+// For local development: http://localhost:8000
+// For production: https://medilens-backend-e3x0.onrender.com
+const isDevelopment = import.meta.env.DEV || window.location.hostname === 'localhost'
+
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (isDevelopment ? 'http://localhost:8000' : 'https://medilens-backend-e3x0.onrender.com')
 
 // API Endpoints
 export const API_ENDPOINTS = {
