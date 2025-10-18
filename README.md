@@ -70,24 +70,6 @@ MediLens provides a seamless platform to:
 - 🌐 **Offline Support** - Service worker for offline functionality
 - ♿ **Accessibility** - WCAG 2.1 compliant interface
 
----
-
-## 🎬 Demo
-
-### 🌐 Live Demo
-Coming soon! Check back for the deployed version.
-
-### 📸 Screenshots
-
-<div align="center">
-
-| Home Screen | Search Results | Dashboard |
-|------------|---------------|-----------|
-| ![Home](https://via.placeholder.com/250x150?text=Upload+Prescription) | ![Results](https://via.placeholder.com/250x150?text=Generic+Alternatives) | ![Dashboard](https://via.placeholder.com/250x150?text=Your+Dashboard) |
-
-</div>
-
----
 
 ## 🏗️ Tech Stack
 
