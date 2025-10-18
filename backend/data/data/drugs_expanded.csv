@@ -1,0 +1,240 @@
+brand_name,active_ingredient,generic_name,use_case,side_effects,price,manufacturer,precautions
+Crocin,Paracetamol,Paracetamol,Fever and pain relief,Nausea; Skin rash; Liver damage (overdose),25.50,GSK,Do not exceed 4g per day; Avoid alcohol
+Dolo 650,Paracetamol,Paracetamol,Fever and pain relief,Nausea; Allergic reactions,30.00,Micro Labs,Consult doctor if pregnant; Avoid with alcohol
+Calpol,Paracetamol,Paracetamol,Fever and pain relief for children,Rare allergic reactions,35.00,GSK,Follow age-appropriate dosing
+Metacin,Paracetamol,Paracetamol,Fever and pain relief,Minimal side effects,22.00,Mankind Pharma,Safe for most adults
+Pyrigesic,Paracetamol,Paracetamol,Fever and pain relief,Rare allergic reactions,18.50,Intas Pharmaceuticals,Avoid overdose
+Brufen,Ibuprofen,Ibuprofen,Pain relief and inflammation,Stomach upset; Dizziness; Headache,42.00,Abbott,Take with food; Avoid if stomach ulcers
+Ibugesic,Ibuprofen,Ibuprofen,Pain relief and inflammation,Nausea; Stomach pain,38.00,Cipla,Take with food
+Combiflam,Ibuprofen + Paracetamol,Ibuprofen + Paracetamol,Pain and fever relief,Stomach upset; Dizziness,28.00,Sanofi,Do not use for more than 3 days without consulting doctor
+Brufen Plus,Ibuprofen + Paracetamol,Ibuprofen + Paracetamol,Pain and fever relief,Nausea; Stomach discomfort,32.50,Abbott,Take with food
+Disprin,Aspirin,Aspirin,Pain relief and blood thinner,Stomach upset; Bleeding,15.00,Reckitt Benckiser,Avoid if allergic to aspirin
+Ecosprin 75,Aspirin,Aspirin,Heart attack prevention,Bleeding; Stomach issues,8.50,USV Ltd,Daily use as prescribed by doctor
+Aspent 75,Aspirin,Aspirin,Antiplatelet therapy,Bleeding risk,7.20,Alkem Laboratories,Take with food
+Azithral 500,Azithromycin,Azithromycin,Bacterial infections,Diarrhea; Nausea; Stomach pain,95.00,Alembic Pharmaceuticals,Complete full course
+Zithromax,Azithromycin,Azithromycin,Bacterial infections,Stomach upset; Diarrhea,105.00,Pfizer,Do not skip doses
+Azee 500,Azithromycin,Azithromycin,Bacterial infections,Nausea; Vomiting,88.00,Cipla,Take on empty stomach
+Augmentin 625,Amoxicillin + Clavulanic Acid,Amoxicillin + Clavulanic Acid,Bacterial infections,Diarrhea; Nausea; Rash,135.00,GSK,Complete full course even if feeling better
+Mox 500,Amoxicillin,Amoxicillin,Bacterial infections,Allergic reactions; Diarrhea,65.00,Ranbaxy,Inform doctor if allergic to penicillin
+Clavam 625,Amoxicillin + Clavulanic Acid,Amoxicillin + Clavulanic Acid,Bacterial infections,Stomach upset; Diarrhea,125.00,Alkem Laboratories,Take with food
+Ciprofloxacin 500,Ciprofloxacin,Ciprofloxacin,Bacterial infections,Nausea; Dizziness; Tendon problems,45.00,Generic,Avoid dairy products
+Cifran 500,Ciprofloxacin,Ciprofloxacin,Bacterial infections,Stomach upset; Headache,52.00,Ranbaxy,Stay hydrated
+Norflox 400,Norfloxacin,Norfloxacin,Urinary tract infections,Nausea; Headache,38.00,Cipla,Take on empty stomach
+Pantoprazole 40,Pantoprazole,Pantoprazole,Acid reflux and GERD,Headache; Diarrhea,42.00,Generic,Take before meals
+Pan 40,Pantoprazole,Pantoprazole,Acid reflux and GERD,Dizziness; Stomach pain,38.50,Alkem Laboratories,Morning dose recommended
+Pantocid,Pantoprazole,Pantoprazole,Acid reflux and GERD,Rare side effects,45.00,Sun Pharma,Take 30 mins before meals
+Omez,Omeprazole,Omeprazole,Acidity and ulcers,Headache; Nausea,32.00,Dr. Reddy's,Take before breakfast
+Omeprazole 20,Omeprazole,Omeprazole,Acidity and ulcers,Diarrhea; Stomach pain,28.00,Generic,Long-term use needs doctor supervision
+Ranitidine 150,Ranitidine,Ranitidine,Acidity and heartburn,Headache; Constipation,18.00,Generic,Take twice daily
+Rantac 150,Ranitidine,Ranitidine,Acidity and heartburn,Dizziness; Diarrhea,22.00,J&J,Can be taken with or without food
+Metformin 500,Metformin,Metformin,Type 2 Diabetes,Nausea; Diarrhea; Stomach upset,12.00,Generic,Take with meals
+Glucophage 500,Metformin,Metformin,Type 2 Diabetes,Stomach issues; Lactic acidosis (rare),15.50,Merck,Regular blood sugar monitoring needed
+Glycomet 500,Metformin,Metformin,Type 2 Diabetes,Diarrhea; Metallic taste,13.50,USV Ltd,Start with low dose
+Glimepiride 1mg,Glimepiride,Glimepiride,Type 2 Diabetes,Hypoglycemia; Weight gain,25.00,Generic,Take before breakfast
+Amaryl 1mg,Glimepiride,Glimepiride,Type 2 Diabetes,Low blood sugar,32.00,Sanofi,Monitor blood glucose regularly
+Amlodipine 5mg,Amlodipine,Amlodipine,High blood pressure,Swelling; Headache; Flushing,18.00,Generic,Take same time daily
+Amlong 5,Amlodipine,Amlodipine,High blood pressure,Ankle swelling; Fatigue,22.00,Micro Labs,Regular BP monitoring needed
+Norvasc 5mg,Amlodipine,Amlodipine,High blood pressure,Dizziness; Palpitations,28.00,Pfizer,Do not stop suddenly
+Telmisartan 40,Telmisartan,Telmisartan,High blood pressure,Dizziness; Back pain,65.00,Generic,Check BP regularly
+Telma 40,Telmisartan,Telmisartan,High blood pressure,Fatigue; Diarrhea,72.00,Glenmark,Avoid potassium supplements
+Atenolol 50,Atenolol,Atenolol,High blood pressure and heart conditions,Fatigue; Cold extremities,15.00,Generic,Do not stop abruptly
+Atorvastatin 10,Atorvastatin,Atorvastatin,High cholesterol,Muscle pain; Liver enzyme elevation,42.00,Generic,Regular lipid profile needed
+Atorva 10,Atorvastatin,Atorvastatin,High cholesterol,Headache; Nausea,48.00,Zydus Cadila,Take at night
+Lipitor 10,Atorvastatin,Atorvastatin,High cholesterol,Muscle weakness; Digestive issues,85.00,Pfizer,Avoid grapefruit juice
+Rosuvastatin 10,Rosuvastatin,Rosuvastatin,High cholesterol,Muscle pain; Weakness,55.00,Generic,Monitor liver function
+Rosuvas 10,Rosuvastatin,Rosuvastatin,High cholesterol,Headache; Dizziness,62.00,Sun Pharma,Evening dose preferred
+Crestor 10,Rosuvastatin,Rosuvastatin,High cholesterol,Nausea; Muscle pain,95.00,AstraZeneca,Regular cholesterol testing
+Clopidogrel 75,Clopidogrel,Clopidogrel,Blood clot prevention,Bleeding; Bruising,28.00,Generic,Report unusual bleeding
+Plavix 75,Clopidogrel,Clopidogrel,Blood clot prevention,Stomach pain; Headache,145.00,Sanofi,Do not stop without consulting doctor
+Deplatt 75,Clopidogrel,Clopidogrel,Blood clot prevention,Nosebleeds; Rash,32.00,Torrent Pharma,Avoid injuries
+Alprazolam 0.5,Alprazolam,Alprazolam,Anxiety and panic disorders,Drowsiness; Dizziness; Memory problems,25.00,Generic,Habit forming - use as prescribed
+Alprax 0.5,Alprazolam,Alprazolam,Anxiety and panic disorders,Sedation; Confusion,28.50,Sun Pharma,Avoid alcohol
+Xanax 0.5,Alprazolam,Alprazolam,Anxiety and panic disorders,Dependence; Withdrawal symptoms,65.00,Pfizer,Do not drive after taking
+Clonazepam 0.5,Clonazepam,Clonazepam,Seizures and anxiety,Drowsiness; Dizziness,18.00,Generic,May cause dependence
+Rivotril 0.5,Clonazepam,Clonazepam,Seizures and anxiety,Memory impairment; Fatigue,35.00,Roche,Gradual dose reduction needed
+Lorazepam 1mg,Lorazepam,Lorazepam,Anxiety disorders,Sedation; Weakness,22.00,Generic,Short-term use recommended
+Ativan 1mg,Lorazepam,Lorazepam,Anxiety disorders,Confusion; Depression,45.00,Pfizer,Avoid prolonged use
+Fluoxetine 20,Fluoxetine,Fluoxetine,Depression and OCD,Nausea; Insomnia; Sexual dysfunction,35.00,Generic,Takes 2-4 weeks to work
+Prozac 20,Fluoxetine,Fluoxetine,Depression and OCD,Anxiety; Weight changes,85.00,Eli Lilly,Do not stop abruptly
+Fludac 20,Fluoxetine,Fluoxetine,Depression and OCD,Headache; Nervousness,38.00,Cadila,Regular psychiatric follow-up
+Sertraline 50,Sertraline,Sertraline,Depression and anxiety,Nausea; Diarrhea; Sexual problems,48.00,Generic,Take with food
+Zoloft 50,Sertraline,Sertraline,Depression and anxiety,Insomnia; Drowsiness,95.00,Pfizer,Consistent daily timing important
+Escitalopram 10,Escitalopram,Escitalopram,Depression and anxiety,Nausea; Fatigue; Sexual dysfunction,55.00,Generic,Morning or evening dose
+Nexito 10,Escitalopram,Escitalopram,Depression and anxiety,Sweating; Sleep disturbances,62.00,Sun Pharma,Takes weeks to show effect
+Lexapro 10,Escitalopram,Escitalopram,Depression and anxiety,Dizziness; Dry mouth,125.00,Lundbeck,Avoid alcohol
+Cetirizine 10,Cetirizine,Cetirizine,Allergies and hay fever,Drowsiness; Dry mouth,15.00,Generic,Non-drowsy for most people
+Zyrtec 10,Cetirizine,Cetirizine,Allergies and hay fever,Fatigue; Headache,45.00,GSK,Once daily dosing
+Cetrine 10,Cetirizine,Cetirizine,Allergies and hay fever,Minimal drowsiness,18.00,Cipla,Safe for long-term use
+Loratadine 10,Loratadine,Loratadine,Allergies,Dry mouth; Headache,12.00,Generic,Non-sedating antihistamine
+Clarityn 10,Loratadine,Loratadine,Allergies,Minimal side effects,35.00,Schering-Plough,Take on empty stomach
+Montelukast 10,Montelukast,Montelukast,Asthma and allergies,Headache; Mood changes,85.00,Generic,Evening dose recommended
+Montair 10,Montelukast,Montelukast,Asthma and allergies,Stomach pain; Diarrhea,92.00,Cipla,Not for acute asthma attacks
+Singulair 10,Montelukast,Montelukast,Asthma and allergies,Fatigue; Dizziness,165.00,Merck,Regular respiratory monitoring
+Salbutamol Inhaler,Salbutamol,Salbutamol,Asthma and bronchospasm,Tremors; Palpitations; Headache,125.00,Generic,Rescue inhaler for quick relief
+Asthalin Inhaler,Salbutamol,Salbutamol,Asthma and bronchospasm,Nervousness; Rapid heartbeat,135.00,Cipla,Rinse mouth after use
+Ventolin Inhaler,Salbutamol,Salbutamol,Asthma and bronchospasm,Throat irritation; Muscle cramps,185.00,GSK,Do not exceed prescribed dose
+Budesonide Inhaler,Budesonide,Budesonide,Asthma maintenance,Oral thrush; Hoarseness,245.00,Generic,Rinse mouth after every use
+Budecort Inhaler,Budesonide,Budesonide,Asthma maintenance,Throat irritation; Cough,265.00,Cipla,Regular use needed for effectiveness
+Levothyroxine 50,Levothyroxine,Levothyroxine,Hypothyroidism,Heart palpitations; Weight loss,22.00,Generic,Take on empty stomach in morning
+Eltroxin 50,Levothyroxine,Levothyroxine,Hypothyroidism,Nervousness; Insomnia,28.00,Aspen,Consistent daily timing crucial
+Thyronorm 50,Levothyroxine,Levothyroxine,Hypothyroidism,Hair loss (temporary),25.50,Abbott,Regular thyroid testing needed
+Vitamin D3 60K,Cholecalciferol,Cholecalciferol,Vitamin D deficiency,Rare at recommended doses,45.00,Generic,Weekly or monthly dose
+Uprise D3,Cholecalciferol,Cholecalciferol,Vitamin D deficiency,Constipation (rare),52.00,Alkem Laboratories,Take with fatty meal
+Calcium Carbonate 500,Calcium Carbonate,Calcium Carbonate,Calcium deficiency,Constipation; Bloating,35.00,Generic,Take with food
+Shelcal 500,Calcium Carbonate + Vitamin D3,Calcium + D3,Bone health,Constipation; Gas,48.00,Elder Pharma,Adequate water intake needed
+Calcium Sandoz,Calcium Lactate Gluconate,Calcium Lactate Gluconate,Calcium supplementation,Stomach upset,95.00,Novartis,Dissolve in water
+Folic Acid 5mg,Folic Acid,Folic Acid,Folate deficiency and pregnancy,Rare allergic reactions,12.00,Generic,Important during pregnancy
+Folvite 5mg,Folic Acid,Folic Acid,Folate deficiency and pregnancy,Minimal side effects,15.50,Abbott,Daily supplementation
+Iron Folic Acid,Ferrous Sulfate + Folic Acid,Iron + Folic Acid,Anemia,Constipation; Stomach upset; Dark stools,18.00,Generic,Take with vitamin C for better absorption
+Ferrous Sulfate 200,Ferrous Sulfate,Ferrous Sulfate,Iron deficiency anemia,Constipation; Nausea; Black stools,22.00,Generic,Take on empty stomach if tolerated
+Feroglobin,Iron + Vitamins,Iron Complex,Anemia and fatigue,Stomach discomfort,125.00,Vitabiotics,Take with orange juice
+Multivitamin Tablet,Mixed Vitamins & Minerals,Multivitamin,General health and nutrition,Rare allergic reactions,45.00,Generic,Take with food
+Becosules,Vitamin B Complex + C,B Complex + C,Vitamin deficiency,Urine discoloration (harmless),32.00,Pfizer,Safe for long-term use
+Revital H,Multivitamins + Ginseng,Multivitamin Complex,Energy and vitality,Minimal side effects,285.00,Ranbaxy,Take after breakfast
+Supradyn,Multivitamins + Minerals,Multivitamin Complex,Overall health,Rare stomach upset,425.00,Bayer,Complete daily nutrition
+Zincovit,Multivitamins + Zinc,Multivitamin + Minerals,Immunity and health,Nausea (if taken empty stomach),135.00,Apex Laboratories,Take with meals
+Prednisolone 5,Prednisolone,Prednisolone,Inflammation and autoimmune conditions,Weight gain; Mood changes; High blood sugar,18.00,Generic,Do not stop suddenly
+Wysolone 5,Prednisolone,Prednisolone,Inflammation and autoimmune conditions,Osteoporosis with long-term use,22.00,Pfizer,Taper dose gradually
+Betnesol 0.5,Betamethasone,Betamethasone,Severe allergies and inflammation,Fluid retention; High BP,15.00,GSK,Short-term use preferred
+Hydrocortisone Cream,Hydrocortisone,Hydrocortisone,Skin inflammation,Skin thinning with prolonged use,45.00,Generic,Apply thin layer
+Betnovate Cream,Betamethasone,Betamethasone,Skin conditions,Local skin reactions,85.00,GSK,Not for face without prescription
+Clotrimazole Cream,Clotrimazole,Clotrimazole,Fungal infections,Skin irritation; Burning,38.00,Generic,Apply twice daily
+Candid Cream,Clotrimazole,Clotrimazole,Fungal infections,Redness; Itching (initial),45.00,Glenmark,Complete full course
+Fluconazole 150,Fluconazole,Fluconazole,Fungal infections,Nausea; Headache; Liver effects,28.00,Generic,Single dose for vaginal yeast infections
+Zocon 150,Fluconazole,Fluconazole,Fungal infections,Stomach pain; Rash,32.00,FDC,Liver monitoring with prolonged use
+Ketoconazole Shampoo,Ketoconazole,Ketoconazole,Dandruff and scalp infections,Scalp irritation; Hair texture changes,225.00,Generic,Use twice weekly
+Nizral Shampoo,Ketoconazole,Ketoconazole,Dandruff and scalp infections,Dryness; Oiliness changes,245.00,Johnson & Johnson,Leave on for 5 minutes
+Acyclovir 400,Acyclovir,Acyclovir,Herpes infections,Nausea; Diarrhea; Headache,45.00,Generic,Start at first symptoms
+Zovirax 400,Acyclovir,Acyclovir,Herpes infections,Kidney effects with high doses,85.00,GSK,Stay well hydrated
+Voveran 50,Diclofenac,Diclofenac,Pain relief and inflammation,Stomach upset; Heartburn; Edema,32.00,Novartis,Take with food; Avoid in ulcers
+Dicloran 50,Diclofenac,Diclofenac,Pain and inflammation,Nausea; Dizziness,28.00,Ipca,Use lowest effective dose
+Hifenac 100,Aceclofenac,Aceclofenac,Pain and osteoarthritis,Stomach discomfort; Rash,55.00,Intas,Take after meals
+Aceclo 100,Aceclofenac,Aceclofenac,Pain and inflammation,Gastric irritation,52.00,Aristo,Avoid alcohol
+Etoshine 90,Etoricoxib,Etoricoxib,Arthritis pain,Edema; Hypertension risk,95.00,Sun Pharma,Not for heart disease patients
+Naprosyn 250,Naproxen,Naproxen,Pain and menstrual cramps,Stomach upset; Drowsiness,48.00,Dr. Reddy's,Take with food
+Ultram 50,Tramadol,Tramadol,Moderate to severe pain,Drowsiness; Nausea; Constipation,68.00,Johnson & Johnson,May cause dependence
+Tramazac 50,Tramadol,Tramadol,Pain management,Dizziness; Dry mouth,62.00,Cadila,Use only as prescribed
+Meftal-Spas,Mefenamic Acid + Dicyclomine,Mefenamic Acid + Dicyclomine,Menstrual cramps; Abdominal pain,Nausea; Dry mouth,58.00,Blue Cross,Avoid in ulcers
+Buscopan,Hyoscine Butylbromide,Hyoscine Butylbromide,Abdominal cramps,Dry mouth; Blurred vision,45.00,Sanofi,Avoid driving if drowsy
+Drotin,Drotaverine,Drotaverine,Abdominal spasm relief,Nausea; Headache,40.00,Abbott,Consult doctor in pregnancy
+Pan-D,Pantoprazole + Domperidone,Pantoprazole + Domperidone,Acidity with nausea,Headache; Diarrhea,85.00,Alkem,Take before meals
+Rabeprazole 20,Rabeprazole,Rabeprazole,Acid reflux and GERD,Headache; Nausea,52.00,Dr. Reddy's,Take before breakfast
+Rablet 20,Rabeprazole,Rabeprazole,Acid reflux and ulcer,Abdominal pain; Flatulence,58.00,Lupin,Short-term use unless advised
+Nexpro 20,Esomeprazole,Esomeprazole,GERD and ulcers,Headache; Constipation,65.00,Torrent,Take 30 mins before meals
+Itopride 50,Itopride,Itopride,Acid reflux with bloating,Diarrhea; Rash,78.00,Abbott,Avoid in GI bleeding
+Ganaton 50,Itopride,Itopride,Functional dyspepsia,Abdominal discomfort,82.00,Abbott,Take before meals
+Colospa 135,Mebeverine,Mebeverine,IBS cramps,Dizziness; Nausea,88.00,Abbott,Swallow whole; do not crush
+Ondem 4,Ondansetron,Ondansetron,Nausea and vomiting,Headache; Constipation,42.00,Alkem,May cause QT prolongation
+Domstal 10,Domperidone,Domperidone,Nausea; Gastroparesis,Dry mouth; Dizziness,35.00,Torrent,Avoid in heart rhythm disorders
+Sinarest,Paracetamol + Phenylephrine + CPM,Paracetamol + Phenylephrine + Chlorpheniramine,Cold and congestion,Drowsiness; Dry mouth,45.00,Centaur,Avoid driving if drowsy
+Allegra 120,Fexofenadine,Fexofenadine,Allergic rhinitis,Headache; Nausea,110.00,Sanofi,Non-sedating; avoid fruit juices
+Xyzal 5,Levocetirizine,Levocetirizine,Allergies and hives,Somnolence; Dry mouth,62.00,Dr. Reddy's,Bedtime dosing preferred
+Levocet 5,Levocetirizine,Levocetirizine,Allergy relief,Drowsiness (mild),48.00,Cipla,Avoid alcohol
+Montair-LC,Montelukast + Levocetirizine,Montelukast + Levocetirizine,Allergic rhinitis and asthma,Headache; Drowsiness,165.00,Cipla,Evening dose recommended
+Foracort 200 Inhaler,Formoterol + Budesonide,Formoterol + Budesonide,Asthma maintenance,Tremors; Oral thrush,410.00,Cipla,Rinse mouth after use
+Seroflo 250 Inhaler,Salmeterol + Fluticasone,Salmeterol + Fluticasone,Asthma/COPD maintenance,Hoarseness; Thrush,520.00,Cipla,Do not use as rescue inhaler
+Tiova Inhaler,Tiotropium,Tiotropium,COPD maintenance,Dry mouth; Constipation,395.00,Cipla,Use daily as directed
+Losar 50,Losartan,Losartan,High blood pressure,Dizziness; Back pain,75.00,Torrent,Check potassium regularly
+Enam 5,Enalapril,Enalapril,Hypertension and heart failure,Cough; Dizziness,42.00,Dr. Reddy's,Avoid in pregnancy
+Cardace 5,Ramipril,Ramipril,Blood pressure control,Cough; Hyperkalemia,65.00,Sanofi,Monitor kidney function
+Lisicard 5,Lisinopril,Lisinopril,Hypertension,Dry cough; Dizziness,48.00,Micro Labs,Avoid potassium supplements
+Met XL 50,Metoprolol Succinate,Metoprolol,Hypertension; Angina,Fatigue; Slow heart rate,85.00,Sun Pharma,Do not stop abruptly
+Concor 5,Bisoprolol,Bisoprolol,Hypertension; Heart failure,Fatigue; Cold extremities,78.00,Merck,Monitor heart rate
+Carloc 6.25,Carvedilol,Carvedilol,Hypertension; Heart failure,Dizziness; Hypotension,66.00,Cipla,Take with food
+Hydrochlorothiazide 12.5,Hydrochlorothiazide,Hydrochlorothiazide,Hypertension; Edema,Frequent urination; Low potassium,24.00,Generic,Take in morning
+Lasix 40,Furosemide,Furosemide,Edema and hypertension,Electrolyte imbalance; Dehydration,28.00,Sanofi,Monitor electrolytes
+Aldactone 25,Spironolactone,Spironolactone,Edema; Heart failure,High potassium; Breast tenderness,55.00,Pfizer,Avoid potassium-rich diet
+Telma-H 40/12.5,Telmisartan + HCTZ,Telmisartan + Hydrochlorothiazide,Hypertension combo,Dizziness; Electrolyte imbalance,95.00,Glenmark,Monitor BP and electrolytes
+Aten-AM,Atenolol + Amlodipine,Atenolol + Amlodipine,Hypertension combo,Fatigue; Swelling,82.00,Intas,Do not stop suddenly
+Atorlip EZ 10/10,Atorvastatin + Ezetimibe,Atorvastatin + Ezetimibe,High cholesterol,Muscle pain; Diarrhea,165.00,Ranbaxy,Check liver enzymes periodically
+Simvotin 20,Simvastatin,Simvastatin,Cholesterol reduction,Muscle pain; Headache,72.00,Sun Pharma,Avoid grapefruit juice
+Diamicron MR 60,Gliclazide,Gliclazide,Type 2 Diabetes,Hypoglycemia; Weight gain,85.00,Serdia,Take with breakfast
+Januvia 100,Sitagliptin,Sitagliptin,Type 2 Diabetes,Nasopharyngitis; Headache,480.00,Merck,Adjust with renal impairment
+Galvus 50,Vildagliptin,Vildagliptin,Type 2 Diabetes,Headache; Dizziness,285.00,Novartis,Monitor liver function
+Tenebite 20,Teneligliptin,Teneligliptin,Type 2 Diabetes,Headache; Hypoglycemia (with SU),165.00,Glenmark,Regular glucose monitoring
+Forxiga 10,Dapagliflozin,Dapagliflozin,Type 2 Diabetes,UTI; Increased urination,450.00,AstraZeneca,Maintain hydration
+Jardiance 10,Empagliflozin,Empagliflozin,Type 2 Diabetes,Genital infections; Thirst,520.00,Boehringer Ingelheim,Monitor kidneys
+Amaryl M 1/500,Glimepiride + Metformin,Glimepiride + Metformin,Type 2 Diabetes,Low sugar; GI upset,115.00,Sanofi,Take with meals
+Glycomet SR 1000,Metformin SR,Metformin,Type 2 Diabetes GI control,Diarrhea; Nausea,38.00,USV Ltd,Take with dinner
+Lantus,Insulin Glargine,Insulin Glargine,Diabetes long-acting,Low blood sugar; Injection site reaction,785.00,Sanofi,Store in fridge
+Gabapin 300,Gabapentin,Gabapentin,Nerve pain; Seizures,Drowsiness; Dizziness,105.00,Intas,Do not stop suddenly
+Lyrica 75,Pregabalin,Pregabalin,Nerve pain; Anxiety,Dizziness; Weight gain,210.00,Pfizer,May cause drowsiness
+Duzela 30,Duloxetine,Duloxetine,Neuropathic pain; Depression,Nausea; Dry mouth,165.00,Sun Pharma,Do not stop abruptly
+Amitone 10,Amitriptyline,Amitriptyline,Chronic pain; Depression,Drowsiness; Dry mouth,32.00,Intas,Bedtime dosing
+Qutipin 50,Quetiapine,Quetiapine,Schizophrenia; Bipolar,Sedation; Weight gain,95.00,Sun Pharma,Regular psychiatric follow-up
+Oliza 5,Olanzapine,Olanzapine,Schizophrenia; Bipolar,Weight gain; Drowsiness,92.00,Intas,Monitor sugars and lipids
+Sizodon 2,Risperidone,Risperidone,Schizophrenia; Bipolar,Tremors; Weight gain,58.00,Sun Pharma,Regular follow-up
+Inderal 40,Propranolol,Propranolol,Anxiety; Migraine; HTN,Fatigue; Cold hands,45.00,Abbott,Do not stop abruptly
+Doxy-1 100,Doxycycline,Doxycycline,Bacterial infections,Photosensitivity; Stomach upset,62.00,Cipla,Avoid dairy/antacids
+Doxt 100,Doxycycline,Doxycycline,Acne; Bacterial infections,Nausea; Sun sensitivity,58.00,Dr. Reddy's,Take with water sitting up
+Levoflox 500,Levofloxacin,Levofloxacin,Bacterial infections,Dizziness; Tendon problems,95.00,Cipla,Avoid strenuous exercise
+Levaquin 500,Levofloxacin,Levofloxacin,Respiratory/UTI infections,Insomnia; Nausea,165.00,Johnson & Johnson,Risk of tendinitis
+Taxim-O 200,Cefixime,Cefixime,Respiratory/UTI infections,Diarrhea; Rash,145.00,Alkem,Complete full course
+Suprax 200,Cefixime,Cefixime,Bacterial infections,Stomach upset; Headache,175.00,Lupin,Take with/without food
+Ceftum 500,Cefuroxime,Cefuroxime,Respiratory infections,Diarrhea; Nausea,250.00,GSK,Take after meals if nauseous
+Zinnat 500,Cefuroxime,Cefuroxime,Sinusitis; Pneumonia,Stomach pain; Rash,265.00,Abbott,Complete course
+Cefoprox 200,Cefpodoxime,Cefpodoxime,Respiratory infections,Diarrhea; Flatulence,190.00,Cipla,Take with food
+Cefodox 200,Cefpodoxime,Cefpodoxime,ENT/Respiratory infections,Nausea; Abdominal pain,210.00,Lupin,Maintain hydration
+Flagyl 400,Metronidazole,Metronidazole,Amebiasis; Giardiasis,Metallic taste; Nausea,32.00,Sanofi,Avoid alcohol completely
+Tiniba 500,Tinidazole,Tinidazole,Parasitic infections,Dizziness; Nausea,35.00,Cipla,Avoid alcohol for 72 hours
+Niftas 100,Nitrofurantoin,Nitrofurantoin,UTI treatment,Nausea; Headache,88.00,Intas,Take with food; Avoid in late pregnancy
+Zyvox 600,Linezolid,Linezolid,Resistant bacterial infections,Headache; Nausea,780.00,Pfizer,Monitor blood counts
+Rifagut 400,Rifaximin,Rifaximin,IBS-D; Traveler's diarrhea,Flatulence; Headache,285.00,Sun Pharma,Avoid if liver issues
+Tamiflu 75,Oseltamivir,Oseltamivir,Influenza treatment,Nausea; Vomiting,485.00,Hoffmann-La Roche,Start within 48 hours
+Sebifin 250,Terbinafine,Terbinafine,Fungal skin/nail infections,Taste disturbance; GI upset,165.00,Cipla,Liver monitoring for long use
+Canditral 100,Itraconazole,Itraconazole,Fungal infections,Stomach upset; Rash,225.00,Glenmark,Take with food
+Isotroin 20,Isotretinoin,Isotretinoin,Severe acne,Dryness; Teratogenic,185.00,Cipla,Strict pregnancy prevention
+Adaferin-BPO Gel,Adapalene + Benzoyl Peroxide,Adapalene + Benzoyl Peroxide,Acne topical treatment,Skin irritation; Dryness,195.00,Galenic Labs,Apply at night; Sunscreen in day
+T-Bact Ointment,Mupirocin,Mupirocin,Skin bacterial infection,Local irritation (mild),95.00,GSK,External use only
+Tenovate Cream,Clobetasol,Clobetasol,Severe skin inflammation,Skin thinning; Irritation,85.00,GSK,Short-term use only
+Caladryl Lotion,Calamine + Diphenhydramine,Calamine + Diphenhydramine,Skin itching; Rashes,Dryness; Pink stain,75.00,Pfizer,External use only
+Urimax 0.4,Tamsulosin,Tamsulosin,BPH urinary symptoms,Dizziness; Ejaculation disorder,195.00,Cipla,Take after same meal daily
+Avodart 0.5,Dutasteride,Dutasteride,BPH management,Decreased libido; Dizziness,225.00,GSK,Not for use in women/children
+Ovral L,Ethinyl Estradiol + Levonorgestrel,EE + Levonorgestrel,Oral contraceptive,Nausea; Spotting,135.00,Pfizer,Take daily at same time
+i-Pill 1.5,Levonorgestrel,Levonorgestrel,Emergency contraception,Nausea; Irregular bleeding,110.00,Piramal,Use within 72 hours
+Duphalac Syrup,Lactulose,Lactulose,Constipation,Bloating; Gas,145.00,Abbott,Adjust dose to 2-3 soft stools/day
+Sat Isabgol,Psyllium Husk,Psyllium Husk,Constipation; Fiber supplement,Bloating; Gas (initial),145.00,Dabur,Drink plenty of water
+Darolac Sachet,Lactobacillus,Lactobacillus,Probiotic for diarrhea,Rare gas; Bloating,22.00,Aristo,Store in cool dry place
+Sporolac Sachet,Lactobacillus,Lactobacillus,Probiotic support,Rare side effects,20.00,Uni Sankyo,Add to water/milk
+ORS Powder,Oral Rehydration Salts,ORS,Dehydration; Diarrhea support,None if taken as directed,20.00,WHO Formulation,Use safe drinking water
+Sinarest-AF Drops,Paracetamol + Phenylephrine + CPM,Paracetamol + Phenylephrine + Chlorpheniramine,Cold relief for kids,Drowsiness; Irritability,35.00,Piramal,Pediatric dosing only
+Zinc Tablet 50,Zinc Sulfate,Zinc Sulfate,Zinc deficiency,Nausea (if empty stomach),32.00,Generic,Take after meals
+Celin 500,Vitamin C (Ascorbic Acid),Ascorbic Acid,Vitamin C supplement,Stomach upset (rare),28.00,GlaxoSmithKline,Do not exceed recommended dose
+Neurobion Forte,B1+B6+B12,B1+B6+B12,B vitamin deficiency,Nausea (rare),38.00,Merck,Daily once after meals
+Thyrox 25,Levothyroxine,Levothyroxine,Hypothyroidism,Palpitations; Insomnia,18.00,Abbott,Take on empty stomach in morning
+Thyrox 100,Levothyroxine,Levothyroxine,Hypothyroidism,Headache; Nervousness,32.00,Abbott,Consistent daily timing crucial
+Calcimax 500,Calcium + Vitamin D3,Calcium Carbonate + Cholecalciferol,Bone health,Constipation; Gas,58.00,Mead Johnson,Take with meals
+Evion 400,Vitamin E (Tocopherol),Tocopherol,Vitamin E deficiency,Nausea (rare),42.00,Merck,Avoid high doses with anticoagulants
+Shelcal HD,Calcium + Vitamin D3,Calcium Carbonate + Cholecalciferol,Bone health in elderly,Constipation; Bloating,88.00,Elder Pharma,Adequate water intake
+ORS-L 200ml,ORS + Zinc,Oral Rehydration + Zinc,Diarrhea in children,None significant,35.00,Generic,Use as per pediatric advice
+T-Bact Cream,Mupirocin,Mupirocin,Skin infections,Local irritation (mild),90.00,GSK,External use only
+Betadine Ointment,Povidone Iodine,Povidone Iodine,Minor cuts and wounds,Skin irritation (rare),55.00,Win-Medicare,External use only
+Digene Tablet,Magnesium + Aluminium Hydroxide + Simethicone,Antacid combo,Acidity; Gas relief,Constipation/Diarrhea (mild),42.00,Abbott,Chew before swallowing
+Cyclopam,Dicyclomine + Paracetamol,Dicyclomine + Paracetamol,Abdominal cramps; Pain,Dry mouth; Drowsiness,52.00,Indoco,Do not exceed dose
+Ecosprin AV 75/10,Aspirin + Atorvastatin,Aspirin + Atorvastatin,Heart protection + cholesterol,Bleeding; Muscle pain,95.00,USV Ltd,Take with food
+Clopilet A 75/75,Clopidogrel + Aspirin,Clopidogrel + Aspirin,Post-stent dual therapy,Bleeding risk; Gastritis,120.00,Sun Pharma,Use under medical supervision
+Telma-AM,Telmisartan + Amlodipine,Telmisartan + Amlodipine,Hypertension combination,Dizziness; Swelling,115.00,Glenmark,Monitor BP regularly
+Losartan-H 50/12.5,Losartan + HCTZ,Losartan + Hydrochlorothiazide,Hypertension combo,Frequent urination; Dizziness,98.00,Torrent,Take in morning
+Atorva ASP 75/10,Aspirin + Atorvastatin,Aspirin + Atorvastatin,Cardio protection,Dyspepsia; Muscle pain,102.00,Zydus,Monitor for bleeding
+Azeflo Nasal Spray,Fluticasone + Azelastine,Fluticasone + Azelastine,Allergic rhinitis nasal spray,Nasal irritation; Dryness,295.00,Cipla,Use as directed; Not for children
+Rantac 150 Plus,Ranitidine + Domperidone,Ranitidine + Domperidone,Acidity + nausea,Drowsiness; Diarrhea,48.00,J&J,Short term use only
+Otrivin Nasal Drops,Xylometazoline,Xylometazoline,Nasal congestion,Rebound congestion (overuse),72.00,Novartis,Use max 3-5 days
+Benadryl Cough Syrup,Diphenhydramine + Ammonium Chloride + Sodium Citrate,Diphenhydramine combo,Dry cough relief,Drowsiness; Dry mouth,95.00,Johnson & Johnson,Avoid driving after dose
+Ascoril LS,Dextromethorphan + Levosalbutamol + Ambroxol,Dextromethorphan combo,Wet cough with spasm,Restlessness; Nausea,110.00,Glenmark,Shake well before use
+TusQ-Dx,Dextromethorphan + Phenylephrine + CPM,Dextromethorphan combo,Dry cough relief,Drowsiness; Palpitations,98.00,Blue Cross,Avoid in hypertension
+Zifi 200,Cefixime,Cefixime,Bacterial infections,Diarrhea; Nausea,165.00,FDC,Complete full course
+Augmentin 375,Amoxicillin + Clavulanic Acid,Amoxicillin + Clavulanic Acid,Bacterial infections,Diarrhea; Rash,110.00,GSK,Take with meals
+Oflox 200,Ofloxacin,Ofloxacin,Bacterial infections,Dizziness; Nausea,62.00,Cipla,Avoid sun exposure
+Moxclav 625,Amoxicillin + Clavulanic Acid,Amoxicillin + Clavulanic Acid,Skin/Resp infections,Diarrhea; Fatigue,128.00,Sun Pharma,Complete the course
+Roxid 150,Roxithromycin,Roxithromycin,Respiratory infections,Nausea; Stomach pain,72.00,Alembic,Take on empty stomach
+Azincure 500,Azithromycin,Azithromycin,Respiratory infections,Diarrhea; Nausea,82.00,Intas,Take once daily
+Betacap 20,Propranolol LA,Propranolol,Migraine prophylaxis; Anxiety,Fatigue; Sleep disturbance,75.00,Sun Pharma,Do not stop abruptly
+Stemetil 5,Prochlorperazine,Prochlorperazine,Nausea; Vertigo,Drowsiness; Dry mouth,32.00,Sanofi,Avoid driving
+Vertin 16,Betahistine,Betahistine,Vertigo; Meniere's disease,Stomach upset; Headache,85.00,Abbott,Take with meals
+Uprise D3 60K,Cholecalciferol,Cholecalciferol,Vitamin D deficiency,Rare side effects,78.00,Alkem,Once weekly dose
+Meftal 500,Mefenamic Acid,Mefenamic Acid,Pain and menstrual cramps,Stomach upset; Dizziness,46.00,Blue Cross,Avoid in ulcer disease
+Zytee RB,Choline Salicylate + Lignocaine,Choline Salicylate + Lignocaine,Mouth ulcers pain relief,Local irritation (rare),68.00,Raptakos Brett,Apply after meals
+D Cold Total,Paracetamol + Phenylephrine + CPM + Caffeine,Paracetamol + Phenylephrine + Chlorpheniramine + Caffeine,Cold and flu symptom relief,Drowsiness; Palpitations,62.00,Piramal,Avoid at night due to caffeine
+Eno Fruit Salt,Sodium Bicarbonate + Citric Acid + Anhydrous Sodium Carbonate,Sodium Bicarbonate + Citric Acid + Sodium Carbonate,Acidity and indigestion relief,Belching; Gas,20.00,GSK,Dissolve in water before drinking
+ORS Electral,Oral Rehydration Salts,ORS,Dehydration support,None significant,22.00,FDC,Use boiled and cooled water
+Zandu Balm,Menthol + Methyl Salicylate + Gaultheria oil,Topical analgesic,Headache; Body pain relief,Skin irritation (rare),40.00,Emami,External use only

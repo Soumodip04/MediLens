@@ -24,7 +24,11 @@ from datetime import datetime
 import json
 
 # Load datasets
-DATA_DIR = Path(__file__).parent.parent / "data"
+# Try multiple possible data locations (for local dev and Docker)
+DATA_DIR = Path(__file__).parent / "data"  # For Docker: backend/data
+if not DATA_DIR.exists():
+    DATA_DIR = Path(__file__).parent.parent / "data"  # For local dev: parent/data
+    
 drugs_df = None
 prices_data = None
 
