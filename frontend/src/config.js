@@ -4,7 +4,7 @@
  */
 
 // Get API URL from environment variable or use production default
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://medilens-backend-rue7.onrender.com'
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://medilens-backend-e3x0.onrender.com'
 
 // API Endpoints
 export const API_ENDPOINTS = {
