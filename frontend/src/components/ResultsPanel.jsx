@@ -405,18 +405,56 @@ Find generic alternatives & save up to 80%!
   )
 }
 
-const InfoCard = ({ icon, title, content, warning }) => (
-  <div className={`p-4 rounded-lg ${
-    warning 
-      ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800' 
-      : 'bg-secondary/30 dark:bg-neutral-700/30'
-  }`}>
-    <div className="flex items-center space-x-2 mb-2">
-      <span className={warning ? 'text-red-600 dark:text-red-400' : 'text-primary dark:text-accent'}>{icon}</span>
-      <h5 className="font-semibold text-sm dark:text-neutral-100">{title}</h5>
+const InfoCard = ({ icon, title, content, warning }) => {
+  // Helper function to format content - handles objects like interactions
+  const formatContent = (data) => {
+    if (!data) return 'Not available';
+    
+    // If it's a string, return as-is (truncate if too long)
+    if (typeof data === 'string') {
+      return data.length > 300 ? data.substring(0, 300) + '...' : data;
+    }
+    
+    // If it's an object with drug interactions format
+    if (typeof data === 'object' && data.drug && Array.isArray(data.drug)) {
+      if (data.drug.length === 0) return 'No known interactions';
+      
+      return data.drug.map((drug, i) => {
+        const effect = data.effect?.[i] || 'Unknown';
+        const effectColor = effect === 'LIFE-THREATENING' ? '🔴' : 
+                           effect === 'SERIOUS' ? '🟠' : 
+                           effect === 'MODERATE' ? '🟡' : '⚪';
+        return `${effectColor} ${drug}: ${effect}`;
+      }).join('\n');
+    }
+    
+    // If it's any other object, try to stringify it
+    if (typeof data === 'object') {
+      try {
+        return JSON.stringify(data);
+      } catch {
+        return 'Data not displayable';
+      }
+    }
+    
+    return String(data);
+  };
+
+  const formattedContent = formatContent(content);
+  
+  return (
+    <div className={`p-4 rounded-lg ${
+      warning 
+        ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800' 
+        : 'bg-secondary/30 dark:bg-neutral-700/30'
+    }`}>
+      <div className="flex items-center space-x-2 mb-2">
+        <span className={warning ? 'text-red-600 dark:text-red-400' : 'text-primary dark:text-accent'}>{icon}</span>
+        <h5 className="font-semibold text-sm dark:text-neutral-100">{title}</h5>
+      </div>
+      <p className="text-sm text-neutral-700 dark:text-neutral-300 whitespace-pre-line">{formattedContent}</p>
     </div>
-    <p className="text-sm text-neutral-700 dark:text-neutral-300">{content}</p>
-  </div>
-)
+  );
+};
 
 export default ResultsPanel

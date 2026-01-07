@@ -276,10 +276,16 @@ const Analytics = () => {
         <MetricCard
           icon={<Activity className="text-orange-500" size={24} />}
           title="Adherence Rate"
-          value={`${analytics.adherenceData.data?.length > 0 ? 
-            Math.round((analytics.adherenceData.data[0] / (analytics.adherenceData.data[0] + analytics.adherenceData.data[1])) * 100) : 0}%`}
-          trend={analytics.adherenceData.data?.[0] > analytics.adherenceData.data?.[1] ? '+5%' : '-3%'}
-          trendUp={analytics.adherenceData.data?.[0] > analytics.adherenceData.data?.[1]}
+          value={`${(() => {
+            const data = analytics.adherenceData?.data;
+            if (!data || data.length < 2) return 0;
+            const taken = data[0] || 0;
+            const missed = data[1] || 0;
+            const total = taken + missed;
+            return total > 0 ? Math.round((taken / total) * 100) : 0;
+          })()}%`}
+          trend={analytics.adherenceData?.data?.[0] > analytics.adherenceData?.data?.[1] ? '+5%' : '-3%'}
+          trendUp={analytics.adherenceData?.data?.[0] > analytics.adherenceData?.data?.[1]}
         />
       </div>
 
@@ -358,8 +364,14 @@ const Analytics = () => {
             />
             <InsightRow
               label="Adherence Score"
-              value={`${analytics.adherenceData.data?.length > 0 ? 
-                Math.round((analytics.adherenceData.data[0] / (analytics.adherenceData.data[0] + analytics.adherenceData.data[1])) * 100) : 0}%`}
+              value={`${(() => {
+                const data = analytics.adherenceData?.data;
+                if (!data || data.length < 2) return 0;
+                const taken = data[0] || 0;
+                const missed = data[1] || 0;
+                const total = taken + missed;
+                return total > 0 ? Math.round((taken / total) * 100) : 0;
+              })()}%`}
               icon="⏱️"
             />
             <InsightRow
