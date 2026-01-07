@@ -1,6 +1,7 @@
 """
 MediLens Backend - Smart Prescription & Generic Navigator
 FastAPI backend for OCR, drug matching, and generic alternatives
+Updated to support 253,973+ Indian medicines database
 """
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
@@ -32,6 +33,24 @@ if not DATA_DIR.exists():
 drugs_df = None
 prices_data = None
 
+# Column mapping: new dataset columns -> internal names we use
+# New dataset: id, name, price, Is_discontinued, manufacturer_name, type, pack_size_label,
+#              short_composition1, short_composition2, salt_composition, medicine_desc, side_effects, drug_interactions
+COLUMN_MAP = {
+    'name': 'brand_name',
+    'price': 'price',
+    'manufacturer_name': 'manufacturer',
+    'salt_composition': 'generic_name',
+    'short_composition1': 'active_ingredient',
+    'short_composition2': 'active_ingredient_2',
+    'medicine_desc': 'use_case',
+    'side_effects': 'side_effects',
+    'drug_interactions': 'interactions',
+    'Is_discontinued': 'is_discontinued',
+    'pack_size_label': 'pack_size',
+    'type': 'medicine_type'
+}
+
 def load_data():
     """Load drug database and price information"""
     global drugs_df, prices_data
@@ -43,20 +62,49 @@ def load_data():
         
         # Prefer master dataset if available
         if master_path.exists():
-            drugs_df = pd.read_csv(master_path)
+            drugs_df = pd.read_csv(master_path, low_memory=False)
             print(f"✅ Loaded {len(drugs_df)} drugs from MASTER database")
         elif expanded_path.exists():
-            drugs_df = pd.read_csv(expanded_path)
+            drugs_df = pd.read_csv(expanded_path, low_memory=False)
             print(f"✅ Loaded {len(drugs_df)} drugs from EXPANDED database")
         elif original_path.exists():
-            drugs_df = pd.read_csv(original_path)
+            drugs_df = pd.read_csv(original_path, low_memory=False)
             print(f"✅ Loaded {len(drugs_df)} drugs from database")
         else:
             print(f"⚠️ No drug database found at {DATA_DIR}")
             drugs_df = pd.DataFrame()
+            return
+        
+        # Rename columns to standardized names if using new dataset format
+        if 'name' in drugs_df.columns and 'brand_name' not in drugs_df.columns:
+            drugs_df = drugs_df.rename(columns=COLUMN_MAP)
+            print("📝 Mapped columns to standard format")
+        
+        # Clean up data
+        if 'brand_name' in drugs_df.columns:
+            # Remove discontinued medicines for cleaner results
+            if 'is_discontinued' in drugs_df.columns:
+                before_count = len(drugs_df)
+                drugs_df = drugs_df[drugs_df['is_discontinued'] != True]
+                drugs_df = drugs_df[drugs_df['is_discontinued'] != 'TRUE']
+                drugs_df = drugs_df[drugs_df['is_discontinued'] != 'True']
+                print(f"🧹 Filtered discontinued medicines: {before_count} → {len(drugs_df)}")
+            
+            # Create a combined active ingredient column
+            if 'active_ingredient_2' in drugs_df.columns:
+                drugs_df['full_composition'] = drugs_df.apply(
+                    lambda row: f"{row['active_ingredient'] or ''} + {row['active_ingredient_2']}".strip(' +') 
+                    if pd.notna(row.get('active_ingredient_2')) and row.get('active_ingredient_2') 
+                    else (row['active_ingredient'] if pd.notna(row.get('active_ingredient')) else ''),
+                    axis=1
+                )
+            
+            print(f"✅ Database ready with {len(drugs_df)} medicines")
             
     except Exception as e:
         print(f"⚠️ Error loading database: {e}")
+        import traceback
+        traceback.print_exc()
         drugs_df = pd.DataFrame()
 
 def check_tesseract():
@@ -320,7 +368,7 @@ def clean_ocr_text(text: str) -> str:
 def extract_medicine_names(text: str) -> List[str]:
     """
     Extract potential medicine names from text
-    Enhanced with fuzzy matching
+    Enhanced with fuzzy matching for 250k+ medicine database
     """
     medicines = []
     
@@ -331,120 +379,164 @@ def extract_medicine_names(text: str) -> List[str]:
     # Split text into words and clean
     words = re.findall(r'\b[A-Za-z]{3,}\b', text)  # Words with 3+ letters
     
+    # Also try to extract compound names (e.g., "Augmentin 625", "Azee 500")
+    compound_patterns = re.findall(r'\b[A-Za-z]+[\s\-]?\d+(?:mg|ml|mcg)?\b', text, re.IGNORECASE)
+    words.extend(compound_patterns)
+    
     print(f"🔍 Extracted words: {words[:20]}...")  # Log first 20 words
     
     # Check each word against database
     for word in words:
         if len(word) < 3:
             continue
+        
+        word_clean = word.strip()
             
         # Try exact match first
         exact_matches = drugs_df[
-            drugs_df['brand_name'].str.lower() == word.lower()
+            drugs_df['brand_name'].str.lower() == word_clean.lower()
         ]
         
         if not exact_matches.empty:
-            medicines.extend(exact_matches['brand_name'].tolist())
+            medicines.extend(exact_matches['brand_name'].tolist()[:5])  # Limit matches
             continue
         
-        # Try partial match (contains)
+        # Try partial match (starts with) - more efficient for large dataset
         partial_matches = drugs_df[
-            drugs_df['brand_name'].str.contains(word, case=False, na=False, regex=False)
+            drugs_df['brand_name'].str.lower().str.startswith(word_clean.lower(), na=False)
         ]
         
         if not partial_matches.empty:
-            medicines.extend(partial_matches['brand_name'].tolist())
+            medicines.extend(partial_matches['brand_name'].tolist()[:5])
+            continue
         
-        # Also try matching against active ingredients
-        ingredient_matches = drugs_df[
-            drugs_df['active_ingredient'].str.contains(word, case=False, na=False, regex=False)
-        ]
+        # Try contains match only for longer words (4+ chars) to avoid too many results
+        if len(word_clean) >= 4:
+            contains_matches = drugs_df[
+                drugs_df['brand_name'].str.contains(word_clean, case=False, na=False, regex=False)
+            ]
+            
+            if not contains_matches.empty:
+                medicines.extend(contains_matches['brand_name'].tolist()[:3])
         
-        if not ingredient_matches.empty:
-            medicines.extend(ingredient_matches['brand_name'].tolist())
+        # Also try matching against salt composition / generic name
+        if 'generic_name' in drugs_df.columns and len(word_clean) >= 4:
+            generic_matches = drugs_df[
+                drugs_df['generic_name'].str.contains(word_clean, case=False, na=False, regex=False)
+            ]
+            
+            if not generic_matches.empty:
+                medicines.extend(generic_matches['brand_name'].tolist()[:3])
     
     # Remove duplicates and return
-    unique_medicines = list(set(medicines))
+    unique_medicines = list(dict.fromkeys(medicines))  # Preserves order
     print(f"✅ Found {len(unique_medicines)} unique medicines")
-    return unique_medicines
+    return unique_medicines[:50]  # Limit total results
 
 @app.get("/drugs")
 async def get_drugs(medicine_name: Optional[str] = None):
     """
     Get drug information and generic alternatives
+    Enhanced for 250k+ medicine database
     """
     try:
         if drugs_df is None or drugs_df.empty:
             return {"success": False, "error": "Drug database not loaded"}
         
         if medicine_name:
-            # Find exact or partial matches
-            matches = drugs_df[
-                drugs_df['brand_name'].str.contains(medicine_name, case=False, na=False)
+            # Find exact or partial matches - optimized for large dataset
+            medicine_lower = medicine_name.lower()
+            
+            # Try exact match first
+            exact_matches = drugs_df[
+                drugs_df['brand_name'].str.lower() == medicine_lower
             ]
+            
+            # If no exact match, try starts with
+            if exact_matches.empty:
+                matches = drugs_df[
+                    drugs_df['brand_name'].str.lower().str.startswith(medicine_lower, na=False)
+                ].head(20)
+            else:
+                matches = exact_matches.head(10)
+            
+            # If still no match, try contains
+            if matches.empty:
+                matches = drugs_df[
+                    drugs_df['brand_name'].str.contains(medicine_name, case=False, na=False, regex=False)
+                ].head(20)
             
             if matches.empty:
                 return {"success": False, "message": "No matches found"}
             
             results = []
             for _, drug in matches.iterrows():
-                # Find generic alternatives with same active ingredient
-                generics = drugs_df[
-                    (drugs_df['active_ingredient'] == drug['active_ingredient']) &
-                    (drugs_df['generic_name'].notna()) &
-                    (drugs_df['brand_name'] != drug['brand_name'])
-                ]
-                
-                # Convert generics to dict and clean NaN values
+                # Find generic alternatives with same salt composition
+                generic_name = drug.get('generic_name', '')
                 generics_list = []
-                for _, gen in generics[['brand_name', 'price', 'manufacturer']].sort_values(by='price', ascending=True).iterrows():
-                    gen_item = {
-                        'brand_name': gen['brand_name'] if pd.notna(gen['brand_name']) else '',
-                        'price': float(gen['price']) if pd.notna(gen['price']) else 0.0,
-                        'manufacturer': gen['manufacturer'] if pd.notna(gen['manufacturer']) else ''
-                    }
-                    # Add optional fields if present
-                    for col in ['is_otc', 'schedule']:
-                        if col in drugs_df.columns:
-                            val = gen.get(col)
-                            gen_item[col] = val if pd.notna(val) and not isinstance(val, float) else None
-                    generics_list.append(gen_item)
                 
-                # Include new optional fields if present
+                if pd.notna(generic_name) and generic_name:
+                    # Find other brands with same salt composition (generic)
+                    generics = drugs_df[
+                        (drugs_df['generic_name'] == generic_name) &
+                        (drugs_df['brand_name'] != drug['brand_name'])
+                    ].head(10)
+                    
+                    # Convert generics to dict and clean NaN values
+                    for _, gen in generics[['brand_name', 'price', 'manufacturer']].sort_values(by='price', ascending=True, na_position='last').iterrows():
+                        gen_item = {
+                            'brand_name': gen['brand_name'] if pd.notna(gen['brand_name']) else '',
+                            'price': float(gen['price']) if pd.notna(gen['price']) else 0.0,
+                            'manufacturer': gen['manufacturer'] if pd.notna(gen['manufacturer']) else ''
+                        }
+                        generics_list.append(gen_item)
+                
+                # Parse drug interactions if available
+                interactions_data = None
+                if 'interactions' in drugs_df.columns and pd.notna(drug.get('interactions')):
+                    try:
+                        interactions_raw = drug.get('interactions', '{}')
+                        if isinstance(interactions_raw, str) and interactions_raw.startswith('{'):
+                            interactions_data = json.loads(interactions_raw)
+                    except:
+                        interactions_data = str(drug.get('interactions', ''))
+                
+                # Build response item
                 item = {
-                    "brand_name": drug['brand_name'],
-                    "active_ingredient": drug['active_ingredient'],
-                    "generic_name": drug['generic_name'],
-                    "use_case": drug['use_case'],
-                    "side_effects": drug['side_effects'],
-                    "price": float(drug['price']) if pd.notna(drug['price']) else None,
-                    "manufacturer": drug['manufacturer'],
-                    "generics": generics_list
+                    "brand_name": drug['brand_name'] if pd.notna(drug.get('brand_name')) else '',
+                    "active_ingredient": drug.get('active_ingredient', '') if pd.notna(drug.get('active_ingredient')) else '',
+                    "generic_name": generic_name if pd.notna(generic_name) else '',
+                    "use_case": str(drug.get('use_case', ''))[:500] if pd.notna(drug.get('use_case')) else '',  # Truncate long descriptions
+                    "side_effects": drug.get('side_effects', '') if pd.notna(drug.get('side_effects')) else '',
+                    "price": float(drug['price']) if pd.notna(drug.get('price')) else None,
+                    "manufacturer": drug.get('manufacturer', '') if pd.notna(drug.get('manufacturer')) else '',
+                    "generics": generics_list,
+                    "pack_size": drug.get('pack_size', '') if pd.notna(drug.get('pack_size')) else '',
+                    "interactions": interactions_data
                 }
-                # Optional enriched fields - handle NaN values
-                for col in [
-                    'strength','dosage_form','is_otc','schedule','age_group','interactions','contraindications','hindi_name'
-                ]:
-                    if col in drugs_df.columns:
-                        val = drug.get(col, None)
-                        # Convert pandas NA/NaN to None for JSON serialization
-                        if pd.isna(val):
-                            item[col] = None
-                        elif isinstance(val, (bool, str)):
-                            item[col] = val
-                        else:
-                            item[col] = None
+                
+                # Add full composition if available
+                if 'full_composition' in drugs_df.columns:
+                    item['full_composition'] = drug.get('full_composition', '') if pd.notna(drug.get('full_composition')) else ''
+                
                 results.append(item)
             
-            return {"success": True, "results": results}
+            return {"success": True, "results": results, "total_found": len(matches)}
         else:
-            # Return all drugs (limit for performance)
+            # Return sample drugs (limit for performance)
+            # Replace NaN values with None for JSON serialization
+            sample_df = drugs_df.head(50).copy()
+            sample_df = sample_df.where(pd.notnull(sample_df), None)
+            sample = sample_df.to_dict('records')
             return {
                 "success": True,
-                "drugs": drugs_df.head(100).to_dict('records')
+                "drugs": sample,
+                "total_in_database": len(drugs_df)
             }
     
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error fetching drugs: {str(e)}")
 
 @app.get("/search")
@@ -461,47 +553,72 @@ async def search_medicine(query: str):
 async def get_medicine_info(medicine_name: str):
     """
     Get detailed information about a specific medicine
+    Enhanced with rich descriptions from 250k+ database
     """
     try:
         if drugs_df is None or drugs_df.empty:
             return {"success": False, "error": "Drug database not loaded"}
         
+        # Try exact match first
         matches = drugs_df[
             drugs_df['brand_name'].str.lower() == medicine_name.lower()
         ]
+        
+        # If no exact match, try contains
+        if matches.empty:
+            matches = drugs_df[
+                drugs_df['brand_name'].str.contains(medicine_name, case=False, na=False, regex=False)
+            ].head(1)
         
         if matches.empty:
             return {"success": False, "message": "Medicine not found"}
         
         drug = matches.iloc[0]
+        
+        # Parse drug interactions JSON if available
+        interactions_data = None
+        interactions_text = ""
+        if 'interactions' in drugs_df.columns and pd.notna(drug.get('interactions')):
+            try:
+                interactions_raw = drug.get('interactions', '{}')
+                if isinstance(interactions_raw, str) and interactions_raw.startswith('{'):
+                    interactions_data = json.loads(interactions_raw)
+                    # Format interactions for display
+                    if interactions_data and 'drug' in interactions_data:
+                        interaction_items = []
+                        for i, d in enumerate(interactions_data.get('drug', [])):
+                            effect = interactions_data.get('effect', [])[i] if i < len(interactions_data.get('effect', [])) else 'Unknown'
+                            interaction_items.append(f"{d}: {effect}")
+                        interactions_text = "; ".join(interaction_items)
+            except:
+                interactions_text = str(drug.get('interactions', ''))
+        
         response = {
             "success": True,
             "info": {
-                "brand_name": drug['brand_name'],
-                "active_ingredient": drug['active_ingredient'],
-                "generic_name": drug['generic_name'],
-                "use_case": drug['use_case'],
-                "side_effects": drug['side_effects'],
-                "precautions": drug.get('precautions', 'Consult your doctor'),
-                "price": float(drug['price']) if pd.notna(drug['price']) else None,
-                "manufacturer": drug['manufacturer']
+                "brand_name": drug['brand_name'] if pd.notna(drug.get('brand_name')) else '',
+                "active_ingredient": drug.get('active_ingredient', '') if pd.notna(drug.get('active_ingredient')) else '',
+                "generic_name": drug.get('generic_name', '') if pd.notna(drug.get('generic_name')) else '',
+                "use_case": drug.get('use_case', '') if pd.notna(drug.get('use_case')) else '',
+                "side_effects": drug.get('side_effects', '') if pd.notna(drug.get('side_effects')) else '',
+                "precautions": "Consult your doctor before use. Read the medicine description carefully.",
+                "price": float(drug['price']) if pd.notna(drug.get('price')) else None,
+                "manufacturer": drug.get('manufacturer', '') if pd.notna(drug.get('manufacturer')) else '',
+                "pack_size": drug.get('pack_size', '') if pd.notna(drug.get('pack_size')) else '',
+                "interactions": interactions_text,
+                "interactions_data": interactions_data
             }
         }
-        # Enriched fields - handle NaN values
-        enriched = {}
-        for col in ['strength','dosage_form','is_otc','schedule','age_group','interactions','contraindications','hindi_name']:
-            if col in drugs_df.columns:
-                val = drug.get(col, None)
-                if pd.isna(val):
-                    enriched[col] = None
-                elif isinstance(val, (bool, str)):
-                    enriched[col] = val
-                else:
-                    enriched[col] = None
-        response['info'].update(enriched)
+        
+        # Add full composition if available
+        if 'full_composition' in drugs_df.columns:
+            response['info']['full_composition'] = drug.get('full_composition', '') if pd.notna(drug.get('full_composition')) else ''
+        
         return response
     
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error fetching info: {str(e)}")
 
 @app.get("/price/{medicine_name}")
@@ -514,16 +631,22 @@ async def get_price_comparison(medicine_name: str):
         if drugs_df is None or drugs_df.empty:
             return {"success": False, "error": "Drug database not loaded"}
         
-        # Find medicine in database
+        # Find medicine in database - try exact match first
         matches = drugs_df[
             drugs_df['brand_name'].str.lower() == medicine_name.lower()
         ]
+        
+        # If no exact match, try contains
+        if matches.empty:
+            matches = drugs_df[
+                drugs_df['brand_name'].str.contains(medicine_name, case=False, na=False, regex=False)
+            ].head(1)
         
         if matches.empty:
             return {"success": False, "message": "Medicine not found in database"}
         
         medicine_data = matches.iloc[0]
-        base_price = float(medicine_data['price'])
+        base_price = float(medicine_data['price']) if pd.notna(medicine_data.get('price')) else 100.0
         
         # Fetch real pharmacy prices
         print(f"💰 Fetching real prices for {medicine_name} (Base: ₹{base_price})")
@@ -534,22 +657,45 @@ async def get_price_comparison(medicine_name: str):
         savings = base_price - cheapest['price']
         savings_percent = (savings / base_price * 100) if base_price > 0 else 0
         
+        # Get generic alternatives for potential savings
+        generic_alternatives = []
+        generic_name = medicine_data.get('generic_name', '')
+        if pd.notna(generic_name) and generic_name:
+            generics = drugs_df[
+                (drugs_df['generic_name'] == generic_name) &
+                (drugs_df['brand_name'] != medicine_data['brand_name']) &
+                (drugs_df['price'].notna())
+            ].nsmallest(5, 'price')
+            
+            for _, gen in generics.iterrows():
+                generic_alternatives.append({
+                    'brand_name': gen['brand_name'],
+                    'price': float(gen['price']) if pd.notna(gen.get('price')) else 0,
+                    'manufacturer': gen.get('manufacturer', '') if pd.notna(gen.get('manufacturer')) else '',
+                    'savings': round(base_price - float(gen['price']), 2) if pd.notna(gen.get('price')) else 0
+                })
+        
         return {
             "success": True,
             "medicine": medicine_name,
-            "active_ingredient": medicine_data['active_ingredient'],
+            "active_ingredient": medicine_data.get('active_ingredient', '') if pd.notna(medicine_data.get('active_ingredient')) else '',
+            "generic_name": generic_name if pd.notna(generic_name) else '',
+            "pack_size": medicine_data.get('pack_size', '') if pd.notna(medicine_data.get('pack_size')) else '',
             "base_price": base_price,
             "cheapest_price": cheapest['price'],
             "best_pharmacy": cheapest['pharmacy'],
             "savings": round(savings, 2),
             "savings_percent": round(savings_percent, 1),
             "comparisons": price_comparison,
+            "generic_alternatives": generic_alternatives,
             "last_updated": datetime.now().isoformat(),
             "currency": "INR"
         }
     
     except Exception as e:
         print(f"❌ Price comparison error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error fetching prices: {str(e)}")
 
 if __name__ == "__main__":
